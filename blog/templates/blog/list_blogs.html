@@ -1,0 +1,22 @@
+{% extends 'users/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      {% for object in object_list %}
+        <div class="col-md-6 mt-4">
+          <div class="card">
+            {% if object.image %}
+              <img class="card-img-top" src="{{ object.image|mymedia }}" alt="{{ object.title }}">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ object.title }}</h5>
+              <a href="{% url 'blog:detail_post' object.id %}" class="btn btn-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

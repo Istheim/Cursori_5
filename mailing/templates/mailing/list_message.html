@@ -1,0 +1,28 @@
+{% extends 'users/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <div class="container">
+            {% for object in object_list %}
+                <div class="row text-center mt-5">
+                    <div class="col-12">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">{{ object.subject }}</h4>
+                            </div>
+
+                            <div class="card-body">
+                                <p class="bg-light">{{ object.content }}</p>
+                                <a type="button" href="{% url 'sending:detail_message' object.id %}" class="btn btn-lg btn-block btn-outline-primary">Детализация</a>
+                                {% if perms.sending.can_change_message %}
+                                    <a type="button" href="{% url 'sending:update_message' object.id %}" class="btn btn-lg btn-block btn-outline-danger">Изменить</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+    </div>
+{% endblock %}

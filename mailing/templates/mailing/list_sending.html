@@ -1,0 +1,68 @@
+{% extends 'users/base.html' %}
+{% block title %}
+    Рассылки
+{% endblock %}
+{% block main %}
+    <div class="row mt-2">
+        <div class="col m-2">
+            <h1>Рассылки</h1>
+            <div class="row mt-2">
+        <div class="col m-2">
+            <a class="btn btn-success" href="{% url 'mailing:create_sending' %}">Добавить рассылку</a>
+        </div>
+    </div>
+            <table class="table table-reflow">
+                <thead>
+                    <tr class="table-active">
+                        <th>Создана</th>
+                        <th>Следующая рассылка</th>
+                        <th>Время</th>
+                        <th>Периодичность</th>
+                        <th>Последняя отправка</th>
+                        <th>Статус</th>
+                        <th>Сообщение</th>
+                        <th>Клиенты</th>
+                        <th>Удалить</th>
+                        <th>Редактировать</th>
+                        <th>Отправить</th>
+                        <th>Отключить</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for object in object_list %}
+                    <tr class="{% if object.get_status == 'created' %}bg-warning
+                    {% elif object.get_status == 'commenced' %}bg-success
+                    {% elif object.get_status == 'completed' %}bg-danger
+                    {% endif %}">
+                        <td>{{ object.created_at }}</td>
+                        <td>{{ object.start_sending_date }}</td>
+                        <td>{{ object.start_sending_time }}</td>
+                        <td>{{ object.frequency }}</td>
+                        <td>{{ object.next_run }}</td>
+                        <td>{{ object.status_sending }}</td>
+                        <td>{{ object.message }}</td>
+                        <td>
+                            {% for customer in object.customer.all|slice:":3" %}
+                            {{ customer }}<br>
+                            {% endfor %}
+                        </td>
+                        <td><a class="btn btn-danger" href="{% url 'mailing:delete_sending' object.pk %}">Удалить</a></td>
+                        <td><a class="btn btn-primary" href="{% url 'mailing:update_sending' object.pk %}">Редактировать</a></td>
+                        <td>
+                            {% if object.status_sending == 'Запущена' %}
+                            <a class="btn btn-warning" href="{% url 'mailing:manual_sending' object.pk %}"> Отправить</a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if object.status_sending != 'Завершена' %}
+                            <a class="btn btn-secondary" href="{% url 'mailing:disable_sending' object.id %}"> Отключить</a>
+                        </td>
+                            {% endif %}
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

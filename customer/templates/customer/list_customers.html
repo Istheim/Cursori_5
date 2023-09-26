@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+
+{%  block content %}
+<div class="container">
+    {% for object in object_list %}
+    <div class="row text-center mt-5">
+        <div class="col-12">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ object.first_name }} {{ object.last_name}}</h4>
+                </div>
+
+                <div class="card-body">
+
+
+                    <ul class="list-unstyled mt-3 mb-4 text-center m-3 bg-light">
+                        <li>Почта: {{ object.email}}</li>
+                        <li>Создатель: {{ object.creator}}</li>
+
+                    </ul>
+
+                    <a type="button" href="{% url 'customer:detail_customer' object.id %}"
+                       class="btn btn-lg btn-block btn-outline-primary">Детализация</a>
+                    <a type="button" href="{% url 'customer:update_customer' object.id %}"
+                       class="btn btn-lg btn-block btn-outline-danger">Изменить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

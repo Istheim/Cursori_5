@@ -1,0 +1,36 @@
+{% extends 'users/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <h4 class="text-lg-start">Создание письма</h4>
+  <form action="{% url 'sending:create_message' %}" method="post" class="row">
+    {% csrf_token %}
+
+    <div class="form-group col-md-12">
+      <div class="form-row">
+        <div class="col">
+          <label class="small mb-1" for="{{ form.subject.id_for_label }}">Тема</label>
+          {{ form.subject }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <div class="form-row">
+        <div class="col">
+          <label class="small mb-1" for="{{ form.content.id_for_label }}">Контент</label>
+          {{ form.content }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12 mt-4">
+      <input class="btn btn-primary btn-block" type="submit" value="Создать письмо">
+    </div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{%  block content %}
+    <div class="container mt-5">
+
+   <div class="row text-center">
+                <div class="col-12">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">{{ object.first_name }} {{ object.last_name}}</h4>
+                        </div>
+
+                        <div class="card-body">
+
+
+                            <ul class="list-unstyled mt-3 mb-4 text-center m-3 bg-light" >
+                                <li>Почта: {{ object.email}}</li>
+                                <li>Создатель: {{ object.creator}}</li>
+                                <li>Комментарий: {{ object.comment}}</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+{% endblock %}

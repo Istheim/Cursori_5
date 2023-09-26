@@ -1,0 +1,27 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<div class="container text-center mt-4">  <!-- Added top margin -->
+    <h1 class="text-center">Данные о рассылках</h1>
+    <div class="row justify-content-center">
+        {% include 'blog/includes/inc-sendings.html' %}
+    </div>
+
+    <div class="row text-center">
+        {% for post in posts %}
+            <div class="col-4">
+                <div class="card text-center mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.content }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Views: {{ post.count_views }}</li>
+                        <li class="list-group-item">Published: {{ post.date_published }}</li>
+                        <a href="{% url 'blog:detail_post' post.id %}" class="btn btn-primary">Подробнее</a>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

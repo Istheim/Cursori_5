@@ -1,0 +1,19 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<div class="col">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Удаление клиента</h5>
+      <form method="post">
+        {% csrf_token %}
+        Уверены, что хотите удалить клиента "{{ object.username }}"?<br>
+        <input type="submit" class="btn btn-outline-danger" value="Уверен">
+      </form>
+      <div class="card-footer">
+        <a href="{% url 'customer:list_customers' %}" class="btn btn-primary"><< Назад</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

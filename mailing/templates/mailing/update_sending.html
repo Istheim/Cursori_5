@@ -1,0 +1,24 @@
+{% extends 'users/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <form action="{% url 'mailing:update_sending' object.id %}" method="post">
+            {% csrf_token %}
+
+            {{ form.as_table }}
+
+
+            <div class="form-group mt-4 mb-0">
+                <input class="btn btn-primary btn-block" type="submit" value="Обновить данные">
+            </div>
+
+            <a type="button" href="{% url 'mailing:delete_sending' object.id %}"
+               class="btn btn-lg btn-block btn-danger">Удалить</a>
+        </form>
+    </div>
+
+
+{% endblock %}

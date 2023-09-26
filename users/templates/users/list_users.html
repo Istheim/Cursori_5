@@ -1,0 +1,39 @@
+{% extends 'users/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{%  block content %}
+<div class="container">
+    {% for object in object_list %}
+    <div class="row text-center">
+        <div class="col-12">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ object.first_name }} {{ object.last_name}}</h4>
+                </div>
+
+                <div class="card-body">
+
+
+                    <ul class="list-unstyled mt-3 mb-4 text-center m-3 bg-light">
+                        <li>{{ object.email }}</li>
+                        {% if object.is_active %}
+                        <li style="color: green;">Активен</li>
+                        {% else %}
+                        <li style="color: red;">Не активен</li>
+                        {% endif %}
+                        {% if object.phone %}
+                        <li>{{ object.phone }}</li>
+                        {% endif %}
+                        <a type="button" href="{% url 'user:blocked_user' object.id %}" class="btn btn-lg btn-block btn-danger">Блокировка пользователя</a>
+                    </ul>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

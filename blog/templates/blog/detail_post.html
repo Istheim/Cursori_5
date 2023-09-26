@@ -1,0 +1,33 @@
+{% extends 'users/base.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{%  block content %}
+    <div class="container">
+    {% if object.image %}
+
+            <img class="card-img-top" src="{{ object.image|mymedia }}" alt="img"  height="700">
+        {% endif %}
+
+   <div class="row text-center">
+                <div class="col-6">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">{{ object.title }}</h4>
+                        </div>
+
+                        <div class="card-body">
+
+
+                            <ul class="list-unstyled mt-3 mb-4 text-center m-3 bg-light" >
+                                <li>Текст поста: {{ object.content}}</li>
+                                <li>Количество просмотров: {{ object.count_views}}</li>
+                                <li>Дата публикации: {{ object.date_published }}</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+{% endblock %}

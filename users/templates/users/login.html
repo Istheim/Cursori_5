@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if user.is_authenticated %}
+        <h1 class="text-center">Наши рассылки</h1>
+        <div class="small"><a href="{% url 'sending:log' %}"><h2>Логи</h2></a></div>
+
+
+    {% else %}
+        <div class="col-lg-5">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Авторизация</h3></div>
+                <div class="card-body">
+                    <form action="{% url 'user:login' %}" method="post">
+                        {% csrf_token %}
+                        <table>
+                            {{ form.as_table }}
+                        </table>
+                        <input class="btn btn-primary" type="submit" value="Войти">
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <div class="small"><a href="{% url 'user:register' %}">Регистрация</a></div>
+                    <div class="list-group-horizontal card-footer text-center small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

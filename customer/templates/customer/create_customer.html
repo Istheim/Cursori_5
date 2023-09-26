@@ -1,0 +1,14 @@
+{% extends 'users/base.html' %}
+
+{%  block content %}
+      <div class="container">
+      <h4>Создание клиента</h4>
+    <form action="{% url 'customer:create_customer' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <div class="form-group mt-4 mb-0">
+            <input class="btn btn-primary btn-block" type="submit" value="Создать клиента">
+        </div>
+    </form>
+    </div>
+{% endblock %}

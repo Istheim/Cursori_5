@@ -1,0 +1,33 @@
+{% extends 'users/base.html' %}
+{% block title %}
+    Логи
+{% endblock %}
+{% block main %}
+    <div class="row mt-2">
+        <div class="col m-2">
+            <h1>Логи</h1>
+            <table class="table table-primary table-striped-columns">
+                <thead>
+                    <tr>
+                        <th>Рассылка</th>
+                        <th>Последняя попытка</th>
+                        <th>Статус</th>
+                        <th>Ответ сервера</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for object in object_list %}
+                    <tr>
+                        <td>{{ object.sending }}</td>
+                        <td>{{ object.last_attempt }}</td>
+                        <td>{{ object.status_attempt }}</td>
+                        <td>{{ object.answer_server }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
