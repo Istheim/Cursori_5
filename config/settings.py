@@ -160,5 +160,5 @@ CACHES = {
 }
 
 CRONJOBS = [
-    ('*/1 * * * *', 'mailing.services.send_mailing')
+    ('*/1 * * * *', 'mailing.services.install_next_date')
 ]

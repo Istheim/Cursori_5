@@ -2,6 +2,7 @@ from builtins import *
 
 from django.contrib import messages
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.models import Group
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -37,6 +38,15 @@ class RegisterUser(CreateView):
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[new_user.email]
             )
+
+            if not new_user.is_staff and not new_user.is_superuser:
+                try:
+                    view_group = Group.objects.get(name='view')
+                    new_user.groups.add(view_group)
+                except Group.DoesNotExist:
+                    pass
+
+            return super().form_valid(form)
 
         return super().form_valid(form)
 

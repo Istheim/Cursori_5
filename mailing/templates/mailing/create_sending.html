@@ -11,50 +11,50 @@
 
             {{ form.as_table }}
 
-            <div class="form-row">#}
-                <div class="col-md-6">#}
-                    <div class="form-group">#}
-                        <label class="small mb-lg-2" for="{{ form.customer.id_for_label }}">Клиенты</label>#}
-                        {{ form.customer }}#}
-                    </div>#}
-                </div>#}
-                <div class="col-md-6">#}
-                    <div class="form-group">#}
-                        <label class="small mb-1" for="{{ form.message.id_for_label }}">Письмо</label>#}
-                        {{ form.message }}#}
-                    </div>#}
-                </div>#}
-            </div>#}
-            <div class="form-row">#}
-                <div class="col-md-6">#}
-                    <div class="form-group">#}
-                        <label class="small mb-1" for="{{ form.frequency.id_for_label }}">Интервал</label>#}
-                        {{ form.frequency }}#}
-                    </div>#}
-                </div>#}
-                <div class="col-md-6">#}
-                    <div class="form-group">#}
-                        <label class="small mb-1" for="{{ form.status_sending.id_for_label }}">Статус</label>#}
-                        {{ form.status_sending }}#}
-                    </div>#}
-                </div>#}
-            </div>#}
-            #}
-            <div class="form-row">#}
-                <br>#}
-                Старт рассылки#}<div class="input-group date" id="datetimepicker1" data-target-input="nearest">#} {{ form.start_sending }}#}<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">#}
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>#}
-                </div>#}</div>#}
-            </div>#}
-            <div class="form-row">#}
-            </div>#}
-            <script>#}
-                 $(function () {#}
-                     $("#datetimepicker1").datetimepicker({#}
-                         format: 'DD/MM/YYYY HH:mm',#}
-                     });#}
-                 });#}
-             </script>#}
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="small mb-lg-2" for="{{ form.customer.id_for_label }}">Клиенты</label>
+                        {{ form.customer }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="small mb-1" for="{{ form.message.id_for_label }}">Письмо</label>
+                        {{ form.message }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="small mb-1" for="{{ form.frequency.id_for_label }}">Интервал</label>
+                        {{ form.frequency }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="small mb-1" for="{{ form.status_sending.id_for_label }}">Статус</label>
+                        {{ form.status_sending }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <br>
+                Старт рассылки}<div class="input-group date" id="datetimepicker1" data-target-input="nearest">#} {{ form.start_sending }}#}<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div></div>
+            </div>
+            <div class="form-row">
+            </div>
+            <script>
+                 $(function ()
+                     $("datetimepicker1").datetimepicker(
+                         format: 'DD/MM/YYYY HH:mm',
+                     });
+                 });
+             </script>
 
             <div class="form-group mt-4 mb-0">
                 <input class="btn btn-primary btn-block" type="submit" value="Создать рассылку">
