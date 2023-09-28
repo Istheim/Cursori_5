@@ -52,7 +52,7 @@ class Sending(models.Model):
     next_run = models.DateTimeField(editable=True, auto_now=True, verbose_name='Дата следующей рассылки')
     frequency = models.CharField(choices=INTERVAL, max_length=30, verbose_name='Периодичность')
     status_sending = models.CharField(choices=STATUS, max_length=30, verbose_name='Статус')
-    start_sending_date = models.DateField(default=timezone.now(), verbose_name='Дата начала')
+    start_sending_date = models.DateField(default=datetime.now(), verbose_name='Дата начала')
     start_sending_time = models.TimeField(default=datetime.now().time(), verbose_name='время рассылки', blank=True,
                                           null=True)
 
